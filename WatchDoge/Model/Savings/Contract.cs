@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace WatchDoge.Model;
+namespace WatchDoge.Model.Savings;
 
 public class Contract
 {

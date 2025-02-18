@@ -3,5 +3,7 @@ namespace WatchDoge.Export;
 public enum ExportType
 {
     Contract,
-    Lease
+    Lease,
+    Office,
+    Kpi
 }

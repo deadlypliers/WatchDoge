@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
 using WatchDoge.Model;
+using WatchDoge.Model.Savings;
+using WatchDoge.Model.Workforce;
 
 namespace WatchDoge.ApiClient;
 
@@ -16,5 +18,23 @@ public class DogeClient
 
         var responseString = await response.Content.ReadAsStringAsync();
         return JsonConvert.DeserializeObject<Receipts>(responseString);
+    }
+
+    public async Task<OfficeResponse?> GetOfficeById(string officeId)
+    {
+        var endpoint = BASE_URL + $"/api/offices/{officeId}";
+        var response = await _client.GetAsync(endpoint);
+        
+        var responseString = await response.Content.ReadAsStringAsync();
+        return JsonConvert.DeserializeObject<OfficeResponse>(responseString);
+    }
+
+    public async Task<KpiResponse?> GetKpiById(string officeId)
+    {
+        var endpoint = BASE_URL + $"/api/kpis/{officeId}";
+        var response = await _client.GetAsync(endpoint);
+        
+        var responseString = await response.Content.ReadAsStringAsync();
+        return JsonConvert.DeserializeObject<KpiResponse>(responseString);
     }
 }
