@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using WatchDoge.Model;
 using WatchDoge.Model.Savings;
 using WatchDoge.Model.Workforce;
 
