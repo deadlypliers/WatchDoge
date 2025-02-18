@@ -11,15 +11,15 @@ var receipts = await client.GetReceipts();
 if (receipts == null)
     throw new Exception("No response from Doge");
 
-var contractExporter = new ContractCsvExport();
-var leaseExporter = new LeaseCsvExport();
+var contractExporter = new CsvExport(ExportType.Contract);
+var leaseExporter = new CsvExport(ExportType.Lease);
 
-if (receipts.Contracts == null || receipts.Contracts.Count == 0)
-    throw new Exception("No contracts found");
+if (receipts.Contracts is { Count: > 0 })
+{
+    contractExporter.Export(receipts.Contracts);
+}
 
-contractExporter.Export(receipts.Contracts);
-
-if (receipts.Leases == null || receipts.Leases.Count == 0)
-    return;
-    
-leaseExporter.Export(receipts.Leases);
+if (receipts.Leases is { Count: > 0 })
+{
+    leaseExporter.Export(receipts.Leases);
+}
